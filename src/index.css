@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 7% 97%;
+    --foreground: 0 0% 6.7%;
+    --card: 60 5% 95%;
+    --card-foreground: 0 0% 6.7%;
+    --popover: 60 7% 97%;
+    --popover-foreground: 0 0% 6.7%;
+    --primary: 220 70% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 60 4% 91%;
+    --secondary-foreground: 0 0% 15%;
+    --muted: 60 5% 93%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 220 60% 95%;
+    --accent-foreground: 220 70% 40%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 60 5% 88%;
+    --input: 60 5% 88%;
+    --ring: 220 70% 50%;
+    --radius: 0.625rem;
+
+    --gradient-mesh-1: 220 70% 60%;
+    --gradient-mesh-2: 250 50% 65%;
+    --gradient-mesh-3: 190 60% 55%;
+
+    --section-divider: linear-gradient(90deg, transparent, hsl(0 0% 6.7% / 0.08), transparent);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 225 13% 10%;
+    --foreground: 0 0% 91.8%;
+    --card: 225 13% 13%;
+    --card-foreground: 0 0% 91.8%;
+    --popover: 225 13% 10%;
+    --popover-foreground: 0 0% 91.8%;
+    --primary: 220 70% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 225 13% 15%;
+    --secondary-foreground: 0 0% 85%;
+    --muted: 225 10% 16%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 220 40% 18%;
+    --accent-foreground: 220 70% 70%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 225 10% 18%;
+    --input: 225 10% 18%;
+    --ring: 220 70% 60%;
+
+    --gradient-mesh-1: 220 60% 40%;
+    --gradient-mesh-2: 260 40% 35%;
+    --gradient-mesh-3: 200 50% 35%;
+
+    --section-divider: linear-gradient(90deg, transparent, hsl(0 0% 91.8% / 0.06), transparent);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .section-divider {
+    height: 1px;
+    background: var(--section-divider);
+  }
+
+  .gradient-mesh {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .gradient-mesh::before,
+  .gradient-mesh::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.12;
+    animation: mesh-float 20s ease-in-out infinite;
+  }
+
+  .gradient-mesh::before {
+    top: -20%;
+    left: -10%;
+    background: radial-gradient(circle, hsl(var(--gradient-mesh-1)), transparent 70%);
+  }
+
+  .gradient-mesh::after {
+    bottom: -20%;
+    right: -10%;
+    background: radial-gradient(circle, hsl(var(--gradient-mesh-2)), transparent 70%);
+    animation-delay: -10s;
+    animation-direction: reverse;
+  }
+}
+
+@layer utilities {
+  .reveal-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 700ms ease-out, transform 700ms ease-out;
+  }
+}
+
+@keyframes mesh-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+/* RTL Support */
+html[dir="rtl"] body {
+  direction: rtl;
+}
+
+html[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+html[dir="rtl"] .text-right {
+  text-align: left;
+}
+html[dir="rtl"] nav .flex-row {
+  flex-direction: row-reverse;
+}
