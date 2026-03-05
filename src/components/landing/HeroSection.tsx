@@ -9,36 +9,29 @@ export function HeroSection() {
       <div className="gradient-mesh" />
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         
-        <h1 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.1]">
+        <h1 className="font-display text-2xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.1]">
           {t("hero.title")}
-        </h1>
-
-        <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          {t("hero.subtitle")}
-        </p>
+          </h1>
+          <p className="mt-4 text-lg md:text-2xl font-semibold text-gray-800 max-w-2xl mx-auto">
+            {t("hero.tagline")}
+            </p>
+            <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              {t("hero.subtitle")}
+              </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           
           <Button
             onClick={() =>
               document
-                .getElementById("contact")
+                .getElementById("services")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           >
             {t("hero.ctaPrimary")}
           </Button>
 
-          <Button
-            variant="secondary"
-            onClick={() =>
-              document
-                .getElementById("services")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            {t("hero.ctaSecondary")}
-          </Button>
+        
         </div>
 
         <p className="mt-6 text-xs text-muted-foreground tracking-wide">

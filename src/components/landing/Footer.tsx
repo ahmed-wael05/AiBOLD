@@ -1,20 +1,14 @@
-export function Footer() {
-  return (
-    <footer className="border-t border-border px-6 py-10">
-      <div className="mt-6 text-center space-y-2">
-  <p className="text-xs text-muted-foreground">
-    © 2026 AIBold. All rights reserved.
-  </p>
+import { useTranslation } from "react-i18next";
 
-  <a
-    href="https://surveymars.com/r/N6F63kNwiqmq"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-  >
-    Language Preference
-  </a>
-</div>
+export function Footer() {
+
+  const { t } = useTranslation();
+
+  return (
+    <footer className="bg-background text-foreground py-10">
+      <div className="mx-auto max-w-6xl text-center">
+        <p>{t("footer.rights")}</p>
+      </div>
     </footer>
   );
 }

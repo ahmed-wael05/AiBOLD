@@ -40,6 +40,7 @@ export function Navbar() {
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
 
+          {/* Logo */}
           <a href="#" className="font-display text-xl font-bold tracking-tight text-foreground">
             AIBold
           </a>
@@ -76,19 +77,38 @@ export function Navbar() {
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
 
-            <Button>
-              {t("getStarted")}
-            </Button>
+            
           </div>
 
-          {/* Mobile Button */}
-          <button
-            onClick={() => setMobileOpen((prev) => !prev)}
-            className="md:hidden p-2 text-foreground relative z-[70]"
-            type="button"
-          >
-            {mobileOpen ? "✕" : "☰"}
-          </button>
+          {/* Mobile Controls */}
+          <div className="flex items-center gap-2 md:hidden">
+
+            {/* Language */}
+            <button
+              onClick={toggleLanguage}
+              className="px-2 py-1 text-xs border border-border rounded-md"
+            >
+              {i18n.language === "en" ? "AR" : "EN"}
+            </button>
+
+            {/* Theme */}
+            <button
+              onClick={toggle}
+              className="p-2 text-sm border border-border rounded-md"
+            >
+              {theme === "dark" ? "☀️" : "🌙"}
+            </button>
+
+            {/* Hamburger */}
+            <button
+              onClick={() => setMobileOpen((prev) => !prev)}
+              className="p-2 text-foreground relative z-[70]"
+              type="button"
+            >
+              {mobileOpen ? "✕" : "☰"}
+            </button>
+
+          </div>
 
         </div>
       </nav>
@@ -117,24 +137,6 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
-
-          <div className="flex items-center gap-4 pt-6 border-t border-border">
-
-            <button
-              onClick={toggleLanguage}
-              className="px-3 py-1 text-sm border rounded-lg"
-            >
-              {i18n.language === "en" ? "AR" : "EN"}
-            </button>
-
-            <button
-              onClick={toggle}
-              className="px-3 py-1 text-sm border rounded-lg"
-            >
-              {theme === "dark" ? "☀️" : "🌙"}
-            </button>
-
-          </div>
 
         </div>
       </div>
