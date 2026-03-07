@@ -70,7 +70,7 @@ export function Navbar() {
                 <div className="bg-background border border-border rounded-xl shadow-lg p-2 min-w-[200px]">
 
                   <Link
-                    to="/carepath"
+                    to="/projects/carepath-ai"
 className="block px-3 py-1.5 
 text-xs font-medium rounded-md 
 text-foreground 

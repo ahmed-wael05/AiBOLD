@@ -18,7 +18,7 @@ i18n
           forClients: "For Our Clients",
 
           hero: {
-            title: "Made To Design ACCELERATE",
+            title: "Made To Design + ACCELERATE",
             tagline: "AI Agents for Brands Ready to Move Faster",
             subtitle:
               "Strategy, automation, and intelligent execution — built with Silicon Valley standards, designed for real-world growth.",
