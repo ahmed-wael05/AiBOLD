@@ -59,7 +59,7 @@ export function Navbar() {
             </a>
 
             {/* Projects Dropdown */}
-            <div className="relative group">
+            <div className="relative group flex items-center">
 
               <button className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Projects
@@ -67,27 +67,32 @@ export function Navbar() {
 
               {/* Dropdown */}
               <div
-                className="
-                absolute left-1/2 -translate-x-1/2 top-full pt-4
-                opacity-0 invisible
-                group-hover:opacity-100 group-hover:visible
-                transition-all duration-200
-                "
-              >
-                <div className="bg-background border border-border rounded-2xl shadow-xl p-2 min-w-[220px]">
+  className="
+  absolute left-1/2 -translate-x-1/2 top-full
+  opacity-0 invisible
+  group-hover:opacity-100 group-hover:visible
+  transition-all duration-200
+  pt-4
+"
+>
 
-                  <Link
-                    to="/carepath"
-                    className="
-                    block rounded-xl px-6 py-4
-                    text-lg font-semibold
-                    text-foreground
-                    hover:bg-secondary
-                    transition
-                    "
-                  >
-                    CarePath AI
-                  </Link>
+  {/* hover bridge */}
+  <div className="absolute -top-4 left-0 right-0 h-4"></div>
+
+  <div className="bg-background border border-border rounded-2xl shadow-xl p-2 min-w-[220px]">
+
+    <Link
+      to="/carepath"
+      className="
+      block rounded-xl px-6 py-4
+      text-lg font-semibold
+      text-foreground
+      hover:bg-secondary
+      transition
+      "
+    >
+      CarePath AI
+    </Link>
 
                 </div>
               </div>
