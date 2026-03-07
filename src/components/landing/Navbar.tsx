@@ -7,6 +7,7 @@ export function Navbar() {
   const { theme, toggle } = useTheme();
   const { t, i18n } = useTranslation();
 
+  const [projectsOpen, setProjectsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -34,75 +35,56 @@ export function Navbar() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
 
           {/* Logo */}
-          <Link
-            to="/"
-            className="font-display text-xl font-bold tracking-tight text-foreground"
-          >
+          <Link to="/" className="font-display text-xl font-bold text-foreground">
             AIBold
           </Link>
 
-          {/* Desktop Links */}
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
 
-            <a
-              href="#about"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
+            <a href="#about" className="text-sm text-muted-foreground hover:text-foreground">
               {t("about")}
             </a>
 
-            <a
-              href="#services"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
+            <a href="#services" className="text-sm text-muted-foreground hover:text-foreground">
               {t("services")}
             </a>
 
-            {/* Projects Dropdown */}
-            <div className="relative group flex items-center">
+            {/* Desktop Projects Dropdown */}
+            <div className="relative group">
 
-              <button className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <button className="text-sm text-muted-foreground hover:text-foreground">
                 Projects
               </button>
 
-              {/* Dropdown */}
               <div
-  className="
-  absolute left-1/2 -translate-x-1/2 top-full
-  opacity-0 invisible
-  group-hover:opacity-100 group-hover:visible
-  transition-all duration-200
-  pt-4
-"
->
+                className="
+                absolute left-1/2 -translate-x-1/2 top-full pt-4
+                opacity-0 invisible
+                group-hover:opacity-100 group-hover:visible
+                transition-all duration-200
+                "
+              >
+                <div className="absolute -top-4 left-0 right-0 h-4"></div>
 
-  {/* hover bridge */}
-  <div className="absolute -top-4 left-0 right-0 h-4"></div>
+                <div className="bg-background border border-border rounded-xl shadow-lg p-2 min-w-[200px]">
 
-  <div className="bg-background border border-border rounded-2xl shadow-xl p-2 min-w-[220px]">
-
-    <Link
-      to="/carepath"
-      className="
-      block rounded-xl px-6 py-4
-      text-lg font-semibold
-      text-foreground
-      hover:bg-secondary
-      transition
-      "
-    >
-      CarePath AI
-    </Link>
+                  <Link
+                    to="/carepath"
+className="block px-3 py-1.5 
+text-xs font-medium rounded-md 
+text-foreground 
+hover:bg-secondary transition"
+                  >
+                    CarePath AI
+                  </Link>
 
                 </div>
               </div>
 
             </div>
 
-            <a
-              href="#contact"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
+            <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground">
               {t("contact")}
             </a>
 
@@ -113,16 +95,14 @@ export function Navbar() {
 
             <button
               onClick={toggleLanguage}
-              className="px-3 py-1.5 text-xs font-medium rounded-full border border-border
-              text-foreground/70 hover:text-foreground
-              hover:bg-secondary/60 transition-all duration-300"
+              className="px-3 py-1.5 text-xs border border-border rounded-full"
             >
               {i18n.language === "en" ? "AR" : "EN"}
             </button>
 
             <button
               onClick={toggle}
-              className="rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+              className="rounded-lg p-2 hover:bg-secondary"
             >
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
@@ -141,15 +121,14 @@ export function Navbar() {
 
             <button
               onClick={toggle}
-              className="p-2 text-sm border border-border rounded-md"
+              className="p-2 border border-border rounded-md"
             >
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
 
             <button
-              onClick={() => setMobileOpen((prev) => !prev)}
-              className="p-2 text-foreground relative z-[70]"
-              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2"
             >
               {mobileOpen ? "✕" : "☰"}
             </button>
@@ -161,14 +140,8 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 ${
-          document.documentElement.dir === "rtl" ? "left-0" : "right-0"
-        } h-full w-72 bg-background shadow-2xl z-40 transform transition-transform duration-300 ease-in-out md:hidden ${
-          mobileOpen
-            ? "translate-x-0"
-            : document.documentElement.dir === "rtl"
-            ? "-translate-x-full"
-            : "translate-x-full"
+        className={`fixed top-0 right-0 h-full w-72 bg-background shadow-2xl z-40 transform transition-transform duration-300 md:hidden ${
+          mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="pt-24 px-6 space-y-6">
@@ -176,7 +149,7 @@ export function Navbar() {
           <a
             href="#about"
             onClick={() => setMobileOpen(false)}
-            className="block text-lg text-foreground hover:text-primary transition-colors"
+            className="block text-lg text-foreground"
           >
             {t("about")}
           </a>
@@ -184,36 +157,41 @@ export function Navbar() {
           <a
             href="#services"
             onClick={() => setMobileOpen(false)}
-            className="block text-lg text-foreground hover:text-primary transition-colors"
+            className="block text-lg text-foreground"
           >
             {t("services")}
           </a>
 
-          {/* Mobile Projects */}
-          <div className="space-y-3">
+          {/* Mobile Projects Toggle */}
+          <div>
 
-            <p className="text-sm text-muted-foreground">
-              Projects
-            </p>
-
-            <Link
-              to="/carepath"
-              onClick={() => setMobileOpen(false)}
-              className="
-              block rounded-xl border border-border
-              px-5 py-3 text-lg font-semibold
-              text-foreground hover:bg-secondary transition
-              "
+            <button
+              onClick={() => setProjectsOpen(!projectsOpen)}
+              className="block text-lg text-foreground"
             >
-              CarePath AI
-            </Link>
+              Projects
+            </button>
+
+            {projectsOpen && (
+              <div className="mt-2 ml-3 space-y-2">
+
+                <Link
+                  to="/carepath"
+                  onClick={() => setMobileOpen(false)}
+                  className="block text-base text-muted-foreground hover:text-primary"
+                >
+                  CarePath AI
+                </Link>
+
+              </div>
+            )}
 
           </div>
 
           <a
             href="#contact"
             onClick={() => setMobileOpen(false)}
-            className="block text-lg text-foreground hover:text-primary transition-colors"
+            className="block text-lg text-foreground"
           >
             {t("contact")}
           </a>
