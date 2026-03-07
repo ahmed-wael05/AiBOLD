@@ -18,8 +18,8 @@ i18n
           forClients: "For Our Clients",
 
           hero: {
-            title: "We Made To ACCELERATE",
-            tagline: "AI Systems for Brands Ready to Move Faster",
+            title: "Made To Design ACCELERATE",
+            tagline: "AI Agents for Brands Ready to Move Faster",
             subtitle:
               "Strategy, automation, and intelligent execution — built with Silicon Valley standards, designed for real-world growth.",
             ctaPrimary: "Explore Our Approach →",
@@ -132,8 +132,8 @@ i18n
           forClients: "لعملائنا",
 
           hero: {
-            title: "أنظمة ذكاء اصطناعي للعلامات الجاهزة للتحرك بسرعة.",
-            tagline: "أنظمة ذكاء اصطناعي للعلامات الجاهزة للتحرك بسرعة",
+            title: "صُمّم للإبداع والانطلاق",
+            tagline: "وكلاء ذكاء اصطناعي للعلامات التجارية الجاهزة للتحرك أسرع",
             subtitle:
               "استراتيجية، أتمتة، وتنفيذ ذكي — بمعايير وادي السيليكون ومصمم للنمو الحقيقي.",
             ctaPrimary: "استكشف منهجيتنا →",

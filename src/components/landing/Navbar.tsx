@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "@/hooks/useTheme";
-import { Button } from "./Button";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export function Navbar() {
   const { theme, toggle } = useTheme();
@@ -9,13 +9,6 @@ export function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const navLinks = [
-    { label: t("about"), href: "#about" },
-    { label: t("services"), href: "#services" },
-    { label: t("creators"), href: "#creators" },
-    { label: t("contact"), href: "#contact" },
-  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -41,21 +34,57 @@ export function Navbar() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
 
           {/* Logo */}
-          <a href="#" className="font-display text-xl font-bold tracking-tight text-foreground">
+          <Link
+            to="/"
+            className="font-display text-xl font-bold tracking-tight text-foreground"
+          >
             AIBold
-          </a>
+          </Link>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+
+            <a
+              href="#about"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("about")}
+            </a>
+
+            <a
+              href="#services"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("services")}
+            </a>
+
+            {/* Projects Dropdown */}
+            <div className="relative group">
+
+              <button className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Projects
+              </button>
+
+              <div className="absolute top-8 left-1/2 -translate-x-1/2 w-52 rounded-xl border border-border bg-background shadow-xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200">
+
+                <Link
+                  to="/projects/carepath-ai"
+                  className="block px-4 py-3 text-sm hover:bg-secondary transition-colors"
+                >
+                  CarePath AI
+                </Link>
+
+              </div>
+
+            </div>
+
+            <a
+              href="#contact"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("contact")}
+            </a>
+
           </div>
 
           {/* Desktop Controls */}
@@ -64,8 +93,8 @@ export function Navbar() {
             <button
               onClick={toggleLanguage}
               className="px-3 py-1.5 text-xs font-medium rounded-full border border-border
-                         text-foreground/70 hover:text-foreground
-                         hover:bg-secondary/60 transition-all duration-300"
+              text-foreground/70 hover:text-foreground
+              hover:bg-secondary/60 transition-all duration-300"
             >
               {i18n.language === "en" ? "AR" : "EN"}
             </button>
@@ -77,13 +106,11 @@ export function Navbar() {
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
 
-            
           </div>
 
           {/* Mobile Controls */}
           <div className="flex items-center gap-2 md:hidden">
 
-            {/* Language */}
             <button
               onClick={toggleLanguage}
               className="px-2 py-1 text-xs border border-border rounded-md"
@@ -91,7 +118,6 @@ export function Navbar() {
               {i18n.language === "en" ? "AR" : "EN"}
             </button>
 
-            {/* Theme */}
             <button
               onClick={toggle}
               className="p-2 text-sm border border-border rounded-md"
@@ -99,7 +125,6 @@ export function Navbar() {
               {theme === "dark" ? "☀️" : "🌙"}
             </button>
 
-            {/* Hamburger */}
             <button
               onClick={() => setMobileOpen((prev) => !prev)}
               className="p-2 text-foreground relative z-[70]"
@@ -127,16 +152,45 @@ export function Navbar() {
       >
         <div className="pt-24 px-6 space-y-6">
 
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+          <a
+            href="#about"
+            onClick={() => setMobileOpen(false)}
+            className="block text-lg text-foreground hover:text-primary transition-colors"
+          >
+            {t("about")}
+          </a>
+
+          <a
+            href="#services"
+            onClick={() => setMobileOpen(false)}
+            className="block text-lg text-foreground hover:text-primary transition-colors"
+          >
+            {t("services")}
+          </a>
+
+          <div className="space-y-2">
+
+            <p className="text-sm text-muted-foreground">
+              Projects
+            </p>
+
+            <Link
+              to="/projects/carepath-ai"
               onClick={() => setMobileOpen(false)}
               className="block text-lg text-foreground hover:text-primary transition-colors"
             >
-              {link.label}
-            </a>
-          ))}
+              CarePath AI
+            </Link>
+
+          </div>
+
+          <a
+            href="#contact"
+            onClick={() => setMobileOpen(false)}
+            className="block text-lg text-foreground hover:text-primary transition-colors"
+          >
+            {t("contact")}
+          </a>
 
         </div>
       </div>

@@ -10,9 +10,9 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         
         <h1 className="font-display text-2xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.1]">
-          {t("hero.title")}
+           {t("hero.title")}
           </h1>
-          <p className="mt-4 text-lg md:text-2xl font-semibold text-gray-800 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg md:text-2xl font-semibold text-gray-800 dark:text-gray-300 max-w-2xl mx-auto">
             {t("hero.tagline")}
             </p>
             <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
