@@ -65,15 +65,31 @@ export function Navbar() {
                 Projects
               </button>
 
-              <div className="absolute top-8 left-1/2 -translate-x-1/2 w-52 rounded-xl border border-border bg-background shadow-xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200">
+              {/* Dropdown */}
+              <div
+                className="
+                absolute left-1/2 -translate-x-1/2 top-full pt-4
+                opacity-0 invisible
+                group-hover:opacity-100 group-hover:visible
+                transition-all duration-200
+                "
+              >
+                <div className="bg-background border border-border rounded-2xl shadow-xl p-2 min-w-[220px]">
 
-                <Link
-                  to="/projects/carepath-ai"
-                  className="block px-4 py-3 text-sm hover:bg-secondary transition-colors"
-                >
-                  CarePath AI
-                </Link>
+                  <Link
+                    to="/carepath"
+                    className="
+                    block rounded-xl px-6 py-4
+                    text-lg font-semibold
+                    text-foreground
+                    hover:bg-secondary
+                    transition
+                    "
+                  >
+                    CarePath AI
+                  </Link>
 
+                </div>
               </div>
 
             </div>
@@ -168,16 +184,21 @@ export function Navbar() {
             {t("services")}
           </a>
 
-          <div className="space-y-2">
+          {/* Mobile Projects */}
+          <div className="space-y-3">
 
             <p className="text-sm text-muted-foreground">
               Projects
             </p>
 
             <Link
-              to="/projects/carepath-ai"
+              to="/carepath"
               onClick={() => setMobileOpen(false)}
-              className="block text-lg text-foreground hover:text-primary transition-colors"
+              className="
+              block rounded-xl border border-border
+              px-5 py-3 text-lg font-semibold
+              text-foreground hover:bg-secondary transition
+              "
             >
               CarePath AI
             </Link>
