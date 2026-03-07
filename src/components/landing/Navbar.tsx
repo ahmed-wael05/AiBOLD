@@ -175,8 +175,8 @@ hover:bg-secondary transition"
             {projectsOpen && (
               <div className="mt-2 ml-3 space-y-2">
 
-                <Link
-                  to="/carepath"
+               
+                  <Link to="/projects/carepath-ai"
                   onClick={() => setMobileOpen(false)}
                   className="block text-base text-muted-foreground hover:text-primary"
                 >
